@@ -2,17 +2,17 @@ import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 
 export const AddTransaction = () => {
-	const [text, setText] = useState("");
+	const [text, setText] = useState('');
 	const [amount, setAmount] = useState(0);
 	const { AddTransaction } = useContext(GlobalContext);
 
-	const onSubmit = (e) => {
+	const onSubmit1 = e => {
 		e.preventDefault();
 
 		const newTransaction = {
 			id: Math.floor(Math.random() * 100000000),
-			text,
-			amount: +amount
+			text: text,
+			amount: parseInt(amount)
         }
         AddTransaction(newTransaction);
 	};
@@ -20,7 +20,7 @@ export const AddTransaction = () => {
 	return (
 		<>
 			<h3>Add new transaction</h3>
-			<form id="form" onSubmit={onSubmit}>
+			<form id="form" onSubmit={onSubmit1}>
 				<div className="form-control">
 					<label htmlFor="text">Text</label>
 					<input
